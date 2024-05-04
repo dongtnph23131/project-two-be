@@ -12,7 +12,8 @@ exports.accessChat = async (req, res) => {
       .populate("users", "-password")
       .populate("lastMessage");
     if (isChat.length === 0) {
-      const data = await Chat.create({ users: [req.user.id, userId] });
+      let data = await Chat.create({ users: [req.user.id, userId] });
+      data=await data.populate('users')
       return res.status(200).json(data);
     }
     return res.status(200).json(isChat[0]);
