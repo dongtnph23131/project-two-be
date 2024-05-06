@@ -14,7 +14,9 @@ app.use("/api/v1", chatRouter);
 app.use("/api/v1", messageRouter);
 const serverCreate = require("http").createServer(app);
 const server = serverCreate.listen(8080, async () => {
-  await mongoose.connect("mongodb://127.0.0.1:27017/project-two-be");
+  await mongoose.connect(
+    "mongodb+srv://donghaha:123456abc@ecommerce.ylijltl.mongodb.net/project-two-be?retryWrites=true"
+  );
 });
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
