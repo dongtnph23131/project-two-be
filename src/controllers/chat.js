@@ -13,7 +13,7 @@ exports.accessChat = async (req, res) => {
       .populate("lastMessage");
     if (isChat.length === 0) {
       let data = await Chat.create({ users: [req.user.id, userId] });
-      data=await data.populate('users')
+      data = await data.populate("users");
       return res.status(200).json(data);
     }
     return res.status(200).json(isChat[0]);
@@ -29,7 +29,8 @@ exports.fetchChatsByUser = async (req, res) => {
       users: { $elemMatch: { $eq: req.user._id } },
     })
       .populate("users", "-password")
-      .populate("lastMessage").sort({ updateAt: -1 });
+      .populate("lastMessage")
+      .sort({ createdAt: -1 });
     return res.status(200).json(chats);
   } catch (error) {
     return res.status(400).json({
