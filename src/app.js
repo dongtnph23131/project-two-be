@@ -21,7 +21,7 @@ const server = serverCreate.listen(8080, async () => {
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://project-two-fe.vercel.app",
+    origin: `${uri_Client()}`,
   },
 });
 io.on("connection", (socket) => {
