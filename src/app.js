@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const userRouter = require("./routers/user");
 const chatRouter = require("./routers/chat");
 const messageRouter = require("./routers/message");
-const uri_Client=require('./config/uri-client')
+const { uri_Client } = require("./config/uri-client");
 dotenv.config();
 const app = express();
 app.use(express.json());
